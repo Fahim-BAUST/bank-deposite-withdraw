@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <h1 class="text-5xl text-center mt-16 ">Let's get some <span
+                class="font-semibold text-green-500">moneyyyyy!!!</span>
+        </h1>
+    </header>
+
+    <main class="w-3/4 mx-auto">
+
+        <section class="mt-10">
+
+            <div class="grid grid-cols-3 gap-4 ">
+
+                <div class="bg-red-300 p-8 rounded">
+                    <h2 class="text-2xl">deposit</h2>
+                    <h3 class="text-4xl">$<span id="deposite-totall">00</span> </h3>
+                </div>
+                <div class="bg-yellow-300 p-8 rounded">
+                    <h2 class="text-2xl">Withdraw</h2>
+                    <h3 class="text-4xl">$<span id="withdraw-totall">00</span></h3>
+                </div>
+                <div class="bg-pink-300 p-8 rounded">
+                    <h2 class="text-2xl">Balance</h2>
+                    <h3 class="text-4xl">$<span id="balance-totall">1240</span></h3>
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <section class="mt-10 ">
+            <div class="grid grid-cols-2 gap-5 ">
+
+                <div class="bg-green-300 p-8 rounded">
+                    <h3 class="text-2xl">Please deposit</h3>
+                    <div>
+                        <input class="border border-gray-400 rounded-lg block w-3/4 mb-4 px-2" type="text" name=""
+                            placeholder="deposit" id="deposit">
+
+                        <button id="button-deposit"
+                            class="bg-red-700 px-5 py-1 rounded-lg font-medium text-white">deposit</button>
+
+                    </div>
+
+                </div>
+                <div class="bg-green-300 p-8 rounded">
+                    <h3 class="text-2xl">Please withdraw</h3>
+                    <div>
+                        <input class="border border-gray-400 rounded-lg block w-3/4 mb-4 px-2" type="text" name=""
+                            placeholder="deposit" id="withdraw">
+
+                        <button id="button-withdraw"
+                            class="bg-red-700 px-5 py-1 rounded-lg font-medium text-white">withdraw</button>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+
+
+    <script>
+
+
+        function getInputValue(inputId) {
+            const Money = document.getElementById(inputId);
+
+            const MoneyUpdate = parseFloat(Money.value);
+
+            Money.value = " ";
+            return MoneyUpdate;
+
+        }
+
+
+        function getUpdateBalence(inputId, Amonunt) {
+            const Totall = document.getElementById(inputId);
+
+            Totall.innerText = parseFloat(Totall.innerText) + Amonunt;
+
+
+        }
+
+
+        function updateBalance(inputId, depositeAmonunt) {
+
+            const balanceTotall = document.getElementById("balance-totall");
+
+            balanceTotall.innerText = parseFloat(balanceTotall.innerText) + depositeAmonunt;
+
+
+        }
+
+
+        document.getElementById("button-deposit").addEventListener('click', function () {
+
+
+            // deposite amount and increase totall balance================================
+
+            const depositeAmonunt = getInputValue("deposit");
+
+            if (depositeAmonunt > 0) {
+                getUpdateBalence("deposite-totall", depositeAmonunt);
+
+                updateBalance("balance-totall", depositeAmonunt);
+
+            }
+            else {
+                alert('wrong input');
+            }
+
+            //=======================================
+
+
+        });
+
+
+        document.getElementById("button-withdraw").addEventListener('click', function () {
+
+            // withdraw amount and deccrease totall balance=================================
+
+            const withdrawAmonunt = getInputValue("withdraw");
+
+
+            if (withdrawAmonunt > 0) {
+                getUpdateBalence("deposite-totall", depositeAmonunt);
+
+                updateBalance("balance-totall", depositeAmonunt);
+
+            }
+            else {
+                getUpdateBalence("withdraw-totall", withdrawAmonunt);
+
+                updateBalance("balance-totall", (-withdrawAmonunt));
+            }
+            //=======================================
+
+        });
+
+
+
+
+    </script>
+
+</body>
+
+</html>

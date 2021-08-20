@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baper bank</title>
+
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <h1 class="text-5xl text-center mt-16 ">Welcome to <span class="font-semibold text-green-500">baper
+                bank!!!</span>
+        </h1>
+    </header>
+
+    <main>
+        <section class="bg-green-100 w-3/4 mx-auto mt-8 p-8">
+            <h3 class="text-2xl mb-4 font-medium  ">Please Login</h3>
+
+            <div>
+                <input class="border border-gray-400 rounded-lg block w-3/4 mb-4 px-2" type="email" name=""
+                    placeholder="email" id="user-email">
+                <input class="border border-gray-400 rounded-lg block w-3/4 mb-4 px-2" type="password" name=""
+                    placeholder="password" id="user-password">
+
+                <button id="button-submit"
+                    class="bg-red-700 px-5 py-1 rounded-lg font-medium text-white">submit</button>
+            </div>
+
+        </section>
+    </main>
+
+
+
+    <script>
+
+        document.getElementById("button-submit").addEventListener('click', function () {
+
+            // get user email and password 
+            const email = document.getElementById("user-email");
+            const password = document.getElementById("user-password");
+
+            const emailValue = email.value;
+            const passValue = password.value;
+
+            if (emailValue == '1@gmail.com' && passValue == 'secret') {
+                window.location.href = 'banking.html';
+
+            }
+            else {
+                alert('wrong information');
+
+            }
+
+
+
+        });
+
+
+    </script>
+</body>
+
+</html>
